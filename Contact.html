@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+    
+<title>Waggler Contact Page</title>
+    
+<link rel="icon" href="Waggle.jpg">
+
+
+<style>
+
+body {
+    background-color: lavender;
+    text-align: center;
+}
+
+#head {
+        text-align: center;
+        
+    }
+    
+#dropper1, #dropper2{
+
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    }
+
+#mapid { height: 180px; }
+    
+.location {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	position:static;
+}
+
+
+.personal {
+	text-align: center;
+	position:static;
+}
+
+img {
+	width: 100%;
+	cursor: pointer;
+}
+
+            
+ #navi {
+            font-size: 25px;
+            overflow:hidden;
+            border: 4px solid black;
+            font-family: serif;
+            background-color: moccasin;
+            text-align:center;
+        }
+#navi a{
+            left: 0;
+            right: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: palevioletred;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            
+        }
+#navi a:hover {
+            background-color: aliceblue;
+            color: black;
+        }
+#navi a.active{
+            background-color: skyblue;
+            color: black;
+        }
+.sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+.sticky + .main {
+            padding-top: 50px;
+        }
+h1, h2, h3 {
+        
+	   text-align:center;
+        font-style: oblique;
+    }
+h1 {
+	color:darkorange;
+	}
+#picdrop {
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
+    display: block;
+	position:relative;
+    }
+#Contact {
+	font-size: 20px;
+	}
+#return{
+    text-align: center;
+    }	
+	
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div id = "head">
+    <h1>Contact Us</h1>
+    
+    </div>
+    
+
+<div class = "navi" id = "navi">
+        <a href = "Main1.html">Home</a>
+        <a class ="active" href = Contact.html>Contact Us</a>
+        <a href = Purchase.html>Purchase Page</a>
+        
+    </div>    
+
+
+ </header>
+
+<div class = "location">
+
+	<h2>Our location on the map:</h2>
+
+	<img src="Location.png"  alt="We are located in the MetLife building" width = 800 height = 500>
+
+</div>
+
+<div id="Contact">
+
+	<br>
+
+	<br>
+
+	<p>Please reach us here for more information:</p>
+
+	<address>
+
+		Phone:212-555-6753
+
+		<br>
+
+		Email:sample.email@gmail.com
+
+		<br>
+
+		200 Park Avenue 
+
+		<br>
+
+		New York 
+
+		<br>
+
+		NY 10166
+
+		<br>
+
+	</address>
+
+</div>
+
+<div id="playground">
+<h3>Click counter session storage test</h3>
+<p><button onclick="clickCount()" type = "button">Store clicks!</button></p>
+    <div id="result"></div>
+
+	
+	<h3>Check where you are compared to where our headquaters is!</h3>
+    
+    <button onclick = "getLocation()"> Get Location!</button>
+    <p id="locate"></p>
+                                 
+    <br>
+           
+    <br>
+</div>
+
+
+    
+<div id="picdrop">
+<h3>Place this picture in the other box!</h3>
+<div id="dropper1" ondrop="drop(event)" ondragover="allowDrop(event)">
+<img src="Ricky1.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="200" height="200" alt = "This is an example of drag and drop">
+</div>
+
+<div id="dropper2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<br>
+    
+<div id = "textSwap">Example</div>
+        
+<div class="swap">
+    <p><button onclick="textChange()">Change the Example text above</button></p>
+</div>
+     
+
+<br>
+
+<div id= "return">
+    
+<a href = #head>Return to top of page</a>
+
+<br>
+
+<br>
+
+<br>
+
+<a href="Main1.html">Return to the main page</a>
+</div>
+<br>
+<script>
+function clickCount() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML = "This button has been clicked " + localStorage.clickcount + " time(s). The count will remain even after leaving the page";
+  } else {
+    document.getElementById("result").innerHTML = "This browser does not support web storage.";
+  }
+}
+var l = document.getElementById("locate");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    l.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  l.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+    
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));    
+
+
+}
+        
+        window.onscroll = function() {navStick()};
+
+        var navi = document.getElementById("navi");
+        var sticky = navi.offsetTop;
+
+        function navStick() {
+            if (window.pageYOffset >= sticky) {
+            navi.classList.add("sticky")
+            } 
+            else {
+            navi.classList.remove("sticky");
+            }
+        }
+                function textChange() {
+        var x = document.getElementById("textSwap");
+           if (x.innerHTML === "Example"){
+               x.innerHTML ="Swapped!";
+           }
+            else {
+                x.innerHTML = "Example";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

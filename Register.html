@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+
+<title>Waggler Register Page</title>
+    
+<link rel="icon" href="Waggle.jpg">
+    
+<style>
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+body {
+    background-color: lavender;
+}
+
+
+input[type=submit] {
+  background-color: orange;
+  color: black;
+  cursor:pointer;
+}
+
+input[type=submit]:hover {
+	box-shadow: 0 9px 12px 0 rgba(0,0,0,0.24), 0 11px 30px 0 rgba(0,0,0,0.19);
+
+}
+
+
+.container {
+  background-color: lightgray;
+  padding: 20px;
+}
+
+
+.valid {
+  color: lightgreen;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✓";
+}
+
+
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "X";
+}
+
+
+#message {
+  display:none;
+  background: white;
+  color: black;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 {
+  display:none;
+  background: white;
+  color: black;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+#return{
+   font-size: 20px;
+}
+#message2 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+ ::placeholder { 
+  color: #6f6968;
+  opacity: 1; /* Firefox requires this to be stated */
+}
+:-ms-input-placeholder { /* Internet Explorer 10 and 11 */
+  color: #6f6968;
+}
+::-ms-input-placeholder { /* Edge browser */
+  color: #6f6968;
+}
+</style>
+</head>   
+<body>
+    
+<h1>Registration Page</h1>
+  
+<form name="register" onsubmit="regis()">
+    
+    <label for="email">Email:</label>
+    <input type="email" name="email" id = "email" placeholder= "jane@example.com" required>
+    
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" placeholder="Janeuser3" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title= "Must have at least one uppercase, one lowercase, and a number, and length is at least 5 or more characters" placeholder="password" required>
+     
+	<label for="viewpw">Show Password</label>
+	<input type="checkbox" name="viewpw" id="viewpw" onclick="viewPW()">
+		
+    <label for="repeatpass">Repeat Password:</label>
+    <input type="password" name="repeatpass" id="repeatpass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title= "Must have at least one uppercase, one lowercase, and a number, and length is at least 5 or more characters" placeholder="password" required>
+        
+	<label for="viewpw2">Show Repeated Password</label>
+	<input type="checkbox" name="viewpw2" id = "viewpw2" onclick="viewPW2()">
+		
+    <input type="submit" name="submit" value="Register">
+    
+</form>
+
+<br>
+
+<div id="message">
+  <h2>Password must contain the following:</h2>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>5 characters</b></p>
+</div>
+
+<div id="message2">
+
+  <p id="repeatcheck" class="invalid">Passwords match</p>
+
+</div>
+	
+    
+<br>
+
+<br>
+    
+<a href="Main1.html"><center>Return to the main page</center></a>
+    
+<script>
+var myInput = document.getElementById("password");
+var repeat = document.getElementById("repeatpass");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+
+myInput.onkeyup = function() {
+
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+
+  if(myInput.value.length >= 5) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+
+}
+
+repeat.onfocus = function() {
+  document.getElementById("message2").style.display = "block";
+}
+
+
+repeat.onblur = function() {
+  document.getElementById("message2").style.display = "none";
+}
+
+
+repeat.onkeyup = function() {
+
+  var lowerCaseLetters = /[a-z]/g;
+  if(repeat.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+
+  var upperCaseLetters = /[A-Z]/g;
+  if(repeat.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+
+  var numbers = /[0-9]/g;
+  if(repeat.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+
+  if(repeat.value.length >= 5) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+
+}
+
+function viewPW() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function viewPW2() {
+  var x = document.getElementById("repeatpass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+
+    function check(repeat) {
+        if (repeat.value != document.getElementById('password').value) {
+            repeat.setCustomValidity('Password Must be Matching.');
+        } else {
+            // input is valid -- reset the error message
+            repeat.setCustomValidity('');
+        }
+    }
+
+function regis() {
+alert("Registration successful!");
+   }
+
+</script>
+
+    
+    <br>
+   
+</body>
+</html>
