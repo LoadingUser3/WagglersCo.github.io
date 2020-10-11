@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<meta charset="UTF-8">
+
+    <title>The Wagglers Company</title>
+    
+    <link rel="icon" href="Waggle.jpg">
+    
+    <style>
+
+
+        .main{
+            margin-left: 140px;
+            background-color: lavender;
+        }
+		
+        .Login {
+            position:absolute;
+            border: 1px solid orange;
+            top: 2px;
+            right: 11px;
+        }
+
+        #navi {
+            font-size: 25px;
+            text-align:center;
+            overflow:hidden;
+            border: 4px solid black;
+            font-family: serif;
+            background-color: moccasin;
+
+        }
+        #navi a{
+            left: 0;
+            right: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: darkred;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+        }
+        #navi a:hover {
+            background-color: aliceblue;
+            color: black;
+        }
+        #navi a.active{
+            background-color: skyblue;
+            color: black;
+        }
+		
+        #return{
+            text-align: center;
+        }
+		
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        .sticky + .main {
+            padding-top: 50px;
+        }
+        
+		.logincontainer{
+			text-align:right;
+			font-size: 30px;
+			
+		}
+		.modalfooter{
+		
+			text-align:center;
+			
+		}
+		.modal-content {
+			text-align:left;
+		}
+		button {
+            font-family: sans-serif;
+			background-color: orange;
+			color: black;
+			cursor:pointer;
+			font-size: 30px;
+		}
+
+		button:hover {
+			box-shadow: 0 9px 12px 0 rgba(0,0,0,0.24), 0 11px 30px 0 rgba(0,0,0,0.19);
+		}	
+		
+        h1, h2, h3 {
+	       text-align:center;
+        }
+		
+		h1 {
+			font-style: bold;
+			color:darkorange;
+		}
+        
+        h2 {
+		   color:darkcyan;
+	       text-decoration:underline overline;
+        }
+
+        h3 {
+	       font-style:italic;
+		   
+        }
+
+        td, th {
+	       border: 2px solid black;
+           border-spacing: 2px;
+	       text-align: center;
+	       padding: 2px;
+        }
+		
+        table {
+	       font-family: sans-serif;
+	       border-collapse: collapse;
+           border-spacing: 5px;
+	       width:100%;
+		   text-align: center;
+        }
+		
+		li {
+			font-family: sans-serif;
+			padding: 17px;
+			font-size: 20px;
+		}
+		
+        #About {
+			background-color: peachpuff;
+            text-align: center;
+            font-size: 28px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 70%;
+            display: block;
+			margin-top: 70px;
+			margin-bottom: 100px;
+			border-width: 7px;
+			border-style:dotted solid;
+			position:static;
+            
+        }
+		
+		#Color {
+			text-align: center;
+			position: static;
+            font-size: 25px;
+		}
+		#Tour {
+			display: block;
+			position: static;
+			text-align: center;
+			}
+			
+        #How {
+			background-color:cornsilk;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		   width: 70%;
+		   font-size:20px;
+		   margin-top: 100px;
+		   margin-bottom: 100px;
+		   border-width: 7px;
+		   border-style:dotted solid;
+		   position:static;
+        }
+		
+        #Package {
+            font-size: 25px;
+            text-align: center;
+			position:static;
+            
+        }
+		#caresquare{
+			background-color: snow;
+		}
+		
+		#pug {
+			background-color: brown;
+			color: yellow;
+			text-align: center;
+			}
+			
+		#husky {
+			background-color: silver;
+			text-align: center;
+			}
+			
+		#dach {
+			background-color: gold;
+			text-align: center;
+			}
+			
+        #FAQ {
+			background-color:lightblue;
+			text-align: center;
+			display: block;
+		   margin-left: auto;
+		   margin-right: auto;
+		   width: 60%;
+		   margin-top: 100px;
+		   margin-bottom: 50px;
+		   border-width: 7px;
+		   border-style:dotted solid;   
+		   position:static;
+            font-size: 16px;
+        }
+		
+		#Spanish {
+			text-align:center;
+            font-size: 25px;
+		}
+        #return{
+            font-size: 20px;
+        }
+		.sidenavi {
+			width: 130px;
+			position: fixed;
+			color: darkred;
+			z-index: 1;
+			top: 25px;
+			left: 10px;
+			font-family: serif;
+            background-color: moccasin;
+			overflow-x: hidden;
+			padding: 8px 0;
+			border: 4px solid black;
+		}
+
+		.sidenavi a {
+			padding: 6px 8px 6px 16px;
+			text-decoration: none;
+			font-size: 25px;
+			color: darkred;
+			display: block;
+		}
+		.sidenavi a:hover {
+			background-color: aliceblue;
+            color: black;
+		}
+	@media screen and (max-height: 450px) {
+		.sidenavi {padding-top: 15px;}
+		.sidenavi a {font-size: 18px;}
+	}
+		
+    </style>
+
+        
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+    
+
+</head>
+    
+<body class="main">
+    
+
+
+    <header>
+
+
+<div class="logincontainer">  
+  <button onclick="window.location.href='Register.html'">Register</button>
+  <button type="button" id="lo">Login</button>
+ 
+  <div class="modal fade" id="mo" role="dialog">
+    <div class="modal-dialog">    
+      
+      <div class="modal-content">        
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 style="text-align:center;">Login</h4>        
+        <div class="modal-body" style="padding:40px 50px;">
+          <form onsubmit="signIn()">
+            <div class="form-group">
+              <label for="usrname"> Email or Username:</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter Email or Username">
+            </div>
+            <div class="form-group">
+              <label for="psw"> Password:</label>
+              <input type="password" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="submit" name="loginsubmit"> Login</button>
+          </form>
+        </div> 
+		<div class="modalfooter">
+          <button type="submit" data-dismiss="modal" > Cancel</button>
+          <p>Not registered? <a href="Register.html">Be a part of the pack by registering</a></p>
+		</div>
+      </div>      
+    </div>
+  </div> 
+</div>
+ 
+<script>
+$(document).ready(function(){
+  $("#lo").click(function(){
+    $("#mo").modal();
+  });
+});
+
+function signIn() {
+alert("You have successfully signed in!");
+   }
+   
+</script>
+    
+    <h1 id="Top">The Waggle Company</h1>
+    
+    <br>
+    
+    <div class = "navi" id = "navi">
+        <a class ="active" href = "Main1.html">Home</a>
+        <a href = Contact.html>Contact Us</a>
+        <a href = Purchase.html>Purchase Page</a>
+        
+        </div>
+ 
+    </header>
+<div class="sidenavi">
+  <a href="#About">About Us</a>
+  <a href="#How">Our Process</a>
+  <a href="#Package">Care Packages</a>
+  <a href="#FAQ">FAQ</a>
+</div>
+       
+<h2 style= "font-size:32px"><b>About Us</b></h2>
+	   
+<div id = "About" class = "about">
+ 
+    
+    <p>We are the Wagglers! We are a small company that enjoys taking care of dogs. Our mission is to help owners that either may be too busy or have other circumstances in their life that will prevent them from taking care of their companions. We treat companions as if they are a part of our own family. Our "Waggle Experts" are all certified to take care of pets and have been checked for any allergies to any dog breed.</p>
+        
+    </div>
+	
+<div id = "Color" class= "color">
+<button type="button" onclick="colorChange()" name="colorbutton" >Switch the color of the Who Are We section between Red and Peach.</button>
+</div>
+<br>
+<div id = "Spanish" class= "spanish">
+<button type="button" onclick="divChange()" name="spanishbutton" >Spanish translation of Who Are We section</button>
+</div>
+
+<hr>
+
+<div id ="Tour">
+<h3>Check out a tour of one of our facilities:</h3>
+
+<p>(Credit to Meadowlake Pet Resort & Training Center for this video)</p>
+
+<video width="700" height="700" controls>
+<source src="VirtualTour.mp4" type="video/mp4">
+</video>
+</div>
+
+<hr>
+    
+<h2><b>How do we take care of your pets?</b></h2>
+	
+<div id = "How" class = "how">
+    
+
+
+	<h3><i>Here are step by step instructions on how the entire process works:</i></h3>
+
+	<ol>
+		<li>You can either visit our care center with your companion and speak to a caretaker or one of our professional caretakers, known as Waggle Experts, will come to your house. </li>
+        
+      
+
+		<li>After consulting with a Waggle Expert, if you decide you want to purchase a Care Package, you may purchase a package from this site or from our care center.</li>
+        
+        
+
+		<li>A Waggle Expert will call to ask an appropriate time and date to start. The starting date will be when the Care Package becomes active.</li>
+        
+        
+
+		<li>Once you confirm the starting time, the Waggle Expert will arrive to pick up your companion! Your companion will be returned to the home at a specified time as well.</li>
+        
+        
+
+		<li>After the first week, the Waggle Expert will contact you to create an optional weekly plan for your companion. This is when you can tell the Waggle Expert what kind of tricks you want your companion to learn! (If you have already discussed this with your Waggle Expert in Step 2, then they will review what you have already discussed.) </li>
+        
+        
+
+		<li>At the end of each week, a weelky update sheet will be emailed to you showing what has been done and what the plan for the next week will be. These can be changed at anytime.</li>
+        
+        
+
+		<li>Once the care period ends, your companion will be brought back to you and a review of everything your companion has learned. You can renew your Care Package and continue with the same weekly plans.</li>
+        
+        
+
+	</ol>
+    
+    <br>
+
+</div>
+
+<hr>
+        
+<div id="Package" class = "package">
+
+
+	<h2><b>Care Packages</b></h2>
+
+	<table id = "dogcare">
+		<tr>
+			<th id = "pug"><i><b>The Pug Patrol (Basic)</b></i></th>
+			<th id = "husky"><i><b>The Husky Hustle (Premium)</b></i></th>
+			<th id = "dach"><i><b>The Dachshund Dream (Ultimate)</b></i></th>
+		</tr>
+		<tr id = "caresquare">
+			<td>
+				<img src = "P1.jpg" width = 100 height = 100 alt = "Pug">
+
+				<p><i><b>$44.99</b></i></p>
+
+				<ul>
+					<li>3 Months of Care</li>
+					<li>1 Trick Trained</li>
+					<li>One Free Dog Food Voucher per month</li>
+					<li>One Free Veternarian Visit</li>
+				</ul>
+
+			</td>
+
+			<td>
+				
+				<img src = "H2.jpg" width = 100 height = 100 alt = "Husky">
+
+					<p><i><b>$79.99</b><br></i></p>
+
+					<ul>
+						<li>6 Months of Care</li>
+						<li>Up to 3 Tricks Trained</li>
+						<li>2 Free Dog Food Vouchers per month</li>
+						<li>2 Free Veternarian Visits</li>
+					</ul>
+
+					
+			</td>
+			<td>
+				<img src = "D4.jpg" width = 100 height = 100 alt = "Dachshund">
+				<p><i><b>$159.99</b><br></i></p>
+					
+				<ul>
+					<li>1 Year of Care</li>
+					<li>Up to 5 Tricks Trained</li>
+					<li>Unlimited Dog Food Vouchers per month</li>
+					<li>Unlimited Free Veternarian Visits</li>
+				</ul>
+
+				
+
+			</td>
+		</tr>
+	</table>
+	<button type="button" onclick= "window.location.href= 'Purchase.html'">Proceed to Purchase Page --> </button>
+</div>
+
+<hr>
+
+    
+<div id="FAQ" class ="faq">
+
+	<br>
+
+	<h2>Frequently Asked Questions</h2>
+
+	<h3>What type of care do you provide?</h3>
+
+	<p>We feed, walk, bathe, and play with dogs. We also monitor their health and inform you immediately of anything they may have contracted.</p>
+
+	<h3>What are Care Packages?</h3>
+
+    <p>Care Packages are subscription packs to our service. There are currently three different types of Care Packages that you may purchase. Each provide different levels of care from each other. <a href = "#Package"><strong><u>You can find them here.</u></strong></a></p>
+
+	<h3>Can I cancel my Care Package at anytime?</h3>
+
+	<p>You may cancel at any time! You will only get refunded for the remaining weeks left of your Care Package.</p>
+
+	<h3>What will happen to my vouchers once I cancel my Care Package?</h3>
+
+	<p>Unfortunately, you will be unable to use them once you cancel.</p>
+
+	<h3>Can I upgrade my Care Package at anytime?</h3>
+
+	<p>Yes you can! Contact your Waggle Expert for more information on how to upgrade</p>
+
+	<h3>Do these packages apply to other pets besides dogs?</h3>
+
+	<p>Not yet! But we do hope to include more companions in the near future!</p>
+
+	<h3>Is there a limit to the amount of dogs each Care Package covers?</h3>
+
+	<p>Each Care Package can only cover a maximum of two dogs per package. Additional dogs will require another Care Package purchase.</p>
+
+	<h3>Is there a minimum/maximum age each Package covers?</h3>
+
+	<p>Dogs must be at least 1 year old in order to be covered. <a href = "http://www.dogbreedslist.info/all-dog-breeds/"><strong><u> The maximum age is at least less than 4 years younger than the average life expectancy based on their breed</u></strong></a>. These senior dogs are given a 25% discount!</p>
+	
+	<h3>Is it possible to take care of my companion in my own home instead?</h3>
+	
+	<p>If you would rather have your companion taken care of at home, we can arrange that! Just let us know before you purchase!</p>
+    
+    <h3>I notice you are based at New York City. Will those who out of state or away from New York City be able to use your services?</h3>
+    
+    <p>Unfortunately, only those living in the New York City area can use our services. In the future, we would like to expand to other cities</p>
+
+	<p><a href = Contact.html><strong><u>If you have any other questions, please contact us through this link.</u></strong></a></p>
+
+	<br>
+
+</div>
+
+
+    
+<div id= "return">
+    
+    	<a href = #Top><b><u>Return to top of page</u></b></a>
+
+	<br>
+	
+	<br>
+    
+        </div>
+    
+    <script>
+        
+        window.onscroll = function() {
+		navStick()
+		};
+		
+        var navi = document.getElementById("navi");
+        var sticky = navi.offsetTop;
+
+        function navStick() {
+            if (window.pageYOffset >= sticky) {
+            navi.classList.add("sticky")
+            } 
+            else {
+            navi.classList.remove("sticky");
+            }
+        }
+      function colorChange() {
+	  
+	  if (document.getElementById("About").style.backgroundColor == "peachpuff"){
+	  document.getElementById("About").style.backgroundColor = "red";
+	  }
+	  else {
+	  document.getElementById("About").style.backgroundColor = "peachpuff";
+	  }
+	  }
+	  
+	  function divChange () {
+	  document.getElementById("About").innerHTML = "Somos los Wagglers! Somos una pequeña empresa que disfruta cuidando perros. Nuestra misión es ayudar a los propietarios que pueden estar demasiado ocupados o tener otras circunstancias en su vida que les impidan cuidar a sus compañeros. Tratamos a los compañeros como si fueran parte de nuestra propia familia. Todos nuestros Waggle Experts están certificados para cuidar mascotas y han sido revisados ​​para detectar alergias a cualquier raza de perro."
+	  
+	  }
+ 
+    </script>
+        
+</body>
+</html>
